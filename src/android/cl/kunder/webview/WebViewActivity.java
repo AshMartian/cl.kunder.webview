@@ -46,7 +46,6 @@ public class WebViewActivity extends CordovaActivity {
                 ProgressBar progressBar = new ProgressBar(activity2,null,android.R.attr.progressBarStyle);
                 
                 LinearLayout linearLayout = new LinearLayout(activity2);
-                linearLayout.setOrientation(LinearLayout.VERTICAL);
                 RelativeLayout layoutPrincipal = new RelativeLayout(activity2);
                 layoutPrincipal.setBackgroundColor(Color.parseColor("#d9000000"));
 
