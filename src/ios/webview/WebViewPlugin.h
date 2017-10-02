@@ -31,10 +31,12 @@ under the License.
 @interface WebViewPlugin : CDVPlugin<WebViewDelegate>
 {
   @private NSString* webViewFinishedCallBack;
+  @private NSMutableDictionary* webViewEventCallbacks;
 }
 @property (nonatomic, retain) WebViewController* webViewController;
 
 - (void)subscribeCallback:(CDVInvokedUrlCommand*)command;
+- (void)unsubscribeEvent:(CDVInvokedUrlCommand*)command;
 - (void)subscribeEvent:(CDVInvokedUrlCommand*)command;
 - (void)sendEvent:(CDVInvokedUrlCommand*)command;
 - (void)show:(CDVInvokedUrlCommand*)command;
