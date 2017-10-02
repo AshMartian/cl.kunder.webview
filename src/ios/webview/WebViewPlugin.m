@@ -23,6 +23,41 @@
     }];
 }
 
+
+- (void)subscribeEvent:(CDVInvokedUrlCommand*)command
+{
+    NSString* event=(NSString*)[command.arguments objectAtIndex:0];
+    @try {
+        [webViewEventCallbacks setObject:command.callbackId forKey:event];
+    }
+    @catch (NSException *exception) {
+        NSString* reason=[exception reason];
+        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString: reason];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    }
+    NSLog(@"Subscribing to Event %@", event);
+}
+
+- (void)unsubscribeEvent:(CDVInvokedUrlCommand*)command
+{
+    NSString* event=(NSString*)[command.arguments objectAtIndex:0];
+    @try {
+        [webViewEventCallbacks removeObjectForKey:event];
+    }
+    @catch (NSException *exception) {
+        NSString* reason=[exception reason];
+        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString: reason];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    }
+    NSLog(@"Unsubscribing to Event %@", event);
+}
+
+- (void)sendEvent:(CDVInvokedUrlCommand*)command
+{
+    NSString* event=(NSString*)[command.arguments objectAtIndex:0];
+    NSLog(@"Sending to Event %@", event);
+}
+
 - (void)show:(CDVInvokedUrlCommand*)command{
   NSString* url=(NSString*)[command.arguments objectAtIndex:0];
   NSLog(@"showwebViewView %@", url);

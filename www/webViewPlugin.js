@@ -28,6 +28,18 @@ module.exports = (function() {
     cordova.exec(successCallback, errorCallback, 'WebViewPlugin', 'subscribeExitCallback', []);
   };
 
+  var _sendEvent = function(event, successCallback, errorCallback) {
+    cordova.exec(successCallback, errorCallback, 'WebViewPlugin', 'sendEvent', [event]);
+  };
+
+  var _subscribeEvent = function(event, successCallback, errorCallback) {
+    cordova.exec(successCallback, errorCallback, 'WebViewPlugin', 'subscribeEvent', [event]);
+  };
+
+  var _unsubscribeEvent = function(event, successCallback, errorCallback) {
+    cordova.exec(successCallback, errorCallback, 'WebViewPlugin', 'unsubscribeEvent', [event]);
+  };
+
   var _exitApp = function() {
     cordova.exec(function(){},function(){}, 'WebViewPlugin', 'exitApp', []);
   };
@@ -39,6 +51,9 @@ module.exports = (function() {
     Close: _hide,
     SubscribeCallback: _subscribeCallback,
     SubscribeExitCallback: _subscribeExitCallback,
+    sendEvent: _sendEvent,
+    subscribeEvent: _subscribeEvent,
+    unsubscribeEvent: _unsubscribeEvent,
     ExitApp: _exitApp,
     HideLoading: _hideLoading
   };

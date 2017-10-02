@@ -35,6 +35,8 @@ under the License.
 @property (nonatomic, retain) WebViewController* webViewController;
 
 - (void)subscribeCallback:(CDVInvokedUrlCommand*)command;
+- (void)subscribeEvent:(CDVInvokedUrlCommand*)command;
+- (void)sendEvent:(CDVInvokedUrlCommand*)command;
 - (void)show:(CDVInvokedUrlCommand*)command;
 - (void)hide:(CDVInvokedUrlCommand*)command;
 - (void)exitApp:(CDVInvokedUrlCommand*)command;
